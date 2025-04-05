@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Круглые часы с числами</title>
+<style>
+#clockContainer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    border: 2px solid #333;
+}
+
+#hour, #minute, #second {
+    position: absolute;
+    background: black;
+    transform-origin: bottom;
+    border-radius: 5px;
+}
+
+#hour {
+    width: 6px;
+    height: 50px;
+    top: 50px;
+    left: 97px;
+    opacity: 0.8;
+}
+
+#minute {
+    width: 4px;
+    height: 70px;
+    top: 30px;
+    left: 98px;
+    opacity: 0.8;
+}
+
+#second {
+    width: 2px;
+    height: 90px;
+    top: 10px;
+    left: 99px;
+    background-color: rgb(255, 0, 221);
+}
+
+.number {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+}
+  </style>
+</head>
+<body>
+
+  <div id="clockContainer">
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+  </div>
+
+  <script src="clock.js"></script>
+
+</body>
+</html>
