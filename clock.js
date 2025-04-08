@@ -1,46 +1,45 @@
-const clockContainer = document.getElementById("clockContainer");
+const clockFace = document.getElementById('clockFace'); // Циферблат часов
+const hourHand = document.getElementById("hourHand");   // Часовая стрелка
+const minuteHand = document.getElementById("minuteHand"); // Минутная стрелка
+const secondHand = document.getElementById("secondHand"); // Секундная стрелка
 
-    // Добавляем числа на циферблат
-for (let i = 1; i <= 12; i++) {
-    const numberDiv = document.createElement("div");
-    numberDiv.classList.add("number");
-    numberDiv.textContent = i;
+// Создаем метки для каждой минуты на циферблате (всего 60 штук)
+for (let i = 0; i < 60; i++) {
+    const marker = document.createElement('div');  
+    marker.classList.add('minute-marker');     
+    marker.style.transform = `rotate(${i * 6}deg)`; // Устанавливаем поворот метки на основе ее позиции (каждая метка поворачивается на 6 градусов)
+    clockFace.appendChild(marker);                  // Добавляем метку на циферблат
 
-    // Рассчитываем угол и позицию каждого числа
-    const angle = (i - 3) * (Math.PI / 6); // Сдвигаем начало отсчета на 3 часа (чтобы 12 было наверху)
-    const radius = 80; 
+    // Каждые 5 минут делаем метку больше (маркер часа)
+    if (i % 5 === 0) {
+        marker.classList.add('hour-marker');  
+    }
 
-    const x = 100 + radius * Math.cos(angle);
-    const y = 100 + radius * Math.sin(angle); 
-
-    numberDiv.style.left = x - 10 + "px";
-    numberDiv.style.top = y - 10 + "px";
-
-    clockContainer.appendChild(numberDiv);
+    marker.style.transform = `rotate(${i * 6}deg)`; // Устанавливаем поворот метки на основе ее позиции (каждая метка поворачивается на 6 градусов)
+    clockFace.appendChild(marker);                 // Добавляем метку на циферблат
 }
 
+// Функция для обновления положения стрелок часов
 function updateClock() {
-    const hourElement = document.getElementById("hour");
-    const minuteElement = document.getElementById("minute");
-    const secondElement = document.getElementById("second");
+    const now = new Date();       
+    const hours = now.getHours();    
+    const minutes = now.getMinutes(); 
+    const seconds = now.getSeconds(); 
 
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
+    // Вычисляем угол поворота для каждой стрелки
+    const hourRotation = (hours % 12 + minutes / 60) * 30;                                                     
+    const minuteRotation = (minutes + seconds / 60) * 6;
+    const secondRotation = seconds * 6;                       
+                                                              
 
-    // Рассчитываем углы поворота стрелок
-    const hourRotation = 30 * hours + minutes / 2; 
-    const minuteRotation = 6 * minutes; 
-    const secondRotation = 6 * seconds; 
+    // Применяем вычисленные углы поворота к стрелкам, используя свойство transform
+    hourHand.style.transform = `translate(-50%, -100%) rotate(${hourRotation}deg)`;       // Поворачиваем часовую стрелку                                                                                 // translate(-50%, -100%) - центрируем стрелку относительно точки вращения
+    minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteRotation}deg)`;   // Поворачиваем минутную стрелку
+    secondHand.style.transform = `translate(-50%, -100%) rotate(${secondRotation}deg)`;   // Поворачиваем секундную стрелку
+}
 
-    hourElement.style.transform = `rotate(${hourRotation}deg)`;
-    minuteElement.style.transform = `rotate(${minuteRotation}deg)`;
-    secondElement.style.transform = `rotate(${secondRotation}deg)`;
-  }
+// Обновляем часы каждую секунду (1000 миллисекунд)
+setInterval(updateClock, 1000);
 
-  // Обновляем часы каждую секунду
-  setInterval(updateClock, 1000);
-
-  // Инициализируем часы при загрузке страницы
-  updateClock();
+// Вызываем функцию updateClock один раз, чтобы отобразить время при загрузке страницы
+updateClock();

@@ -2,208 +2,45 @@
 <html>
 <head>
     <title>Часы</title>
-    <style>
-        #clockContainer {
-            position: relative;
-            width: 400px; 
-            height: 300px; 
-            background-color: #fff;
-            border: none; 
-            margin: 50px auto; 
-        }
-
-        #innerFrame { 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 360px; 
-            height: 260px; 
-            margin-top: -130px;
-            margin-left: -180px;
-            border: 4px solid black;
-            border-radius: 50%;
-        }
-
-        #clockFace {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 190px; 
-            height: 190px; 
-            margin-top: -95px;
-            margin-left: -95px;
-            border-radius: 50%;
-            border: 4px solid black;
-        }
-
-        .minute-marker {
-            position: absolute;
-            width: 1px;
-            height: 5px; 
-            background-color: black;
-            top: 0%;
-            left: 50%;
-            transform-origin: center 95px; 
-        }
-
-        .hour-marker {
-            height: 10px;  
-            width: 1px; 
-            transform-origin: center 95px; 
-            background-color: rgb(0, 0, 0);
-        }
-
-        .hand {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform-origin: bottom center;
-            background-color: black;
-            border-radius: 8px;
-        }
-
-        #hourHand {
-            width: 4px;
-            height: 40px;
-            margin-left: -2px;
-            margin-bottom: -5px;
-
-        }
-
-        #minuteHand {
-            width: 3px;
-            height: 60px;
-            margin-left: -1.5px;
-            margin-bottom: -5px;
-        }
-
-        #secondHand {
-            width: 1px;
-            height: 75px;
-            margin-left: -0.5px;
-            margin-bottom: -5px;
-            background-color: red;
-        }
-
-
-        #dateYear {
-            font-family: 'Trebuchet MS';
-            position: absolute;
-            top: 46%; 
-            left: 3%;
-            font-size: 17px; 
-        }
-
-        #dayMonth {
-            font-family: 'Trebuchet MS';
-            position: absolute;
-            top: 46%; 
-            right: 3%;
-            font-size: 17px; 
-        }
-
-        #supports {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: space-around;
-            width: 85%;
-            margin-bottom: 1px;
-        }
-
-        .support {
-            width: 25px; 
-            height: 25px;
-            border-radius: 50%;
-            background-color: rgb(97, 192, 50);
-            border: 3px solid black;
-        }
-        .numeral {
-            position: absolute;
-            font-size: 12px;
-            color: black;
-            text-align: center;
-        }
-
-    </style>
+    <link href="clock.css" rel="stylesheet"> <!-- Подключаем файл стилей CSS -->
 </head>
 <body>
 
-<div id="clockContainer">
-    <div id="outerFrame">
-        <div id="innerFrame">
-            <div id="dateYear">2024</div>
-            <div id="dayMonth">17.10</div>
+<div id="clockContainer"> <!-- Контейнер для всех элементов часов -->
+    <div id="outerFrame"> <!-- Внешняя рамка часов -->
+        <div id="innerFrame"> <!-- Внутренняя рамка часов -->
+            <span id="dateYear">2025</span> <!-- Элемент для отображения года -->
+            <div id="dayMonth">08.04</div> <!-- Элемент для отображения дня и месяца -->
         </div>
     </div>
-    <div id="clockFace">
-        <div class="numeral" style="top: -11%; left: 50%; transform: translateX(-50%);">XII</div>
-        <div class="numeral" style="top: 50%; right: -11%; transform: translateY(-50%);">III</div>
-        <div class="numeral" style="bottom: -11%; left: 50%; transform: translateX(-50%);">VI</div>
-        <div class="numeral" style="top: 50%; left: -11%; transform: translateY(-50%);">IX</div>
+    <div id="clockFace"> <!-- Циферблат часов -->
+        <div class="numeral" style="top: -11%; left: 50%; transform: translateX(-50%);">XII</div> 
+        <div class="numeral" style="top: 50%; right: -11%; transform: translateY(-50%);">III</div> 
+        <div class="numeral" style="bottom: -11%; left: 50%; transform: translateX(-50%);">VI</div> 
+        <div class="numeral" style="top: 50%; left: -11%; transform: translateY(-50%);">IX</div> 
 
-        <div class="numeral" style="top: -5%; right: 22%;">I</div>
-        <div class="numeral" style="top: -6%; left: 22%;">XI</div>
+        <div class="numeral" style="top: -5%; right: 22%;">I</div> 
+        <div class="numeral" style="top: -6%; left: 22%;">XI</div> 
         <div class="numeral" style="bottom: -5%; right: 22%;">V</div>
-        <div class="numeral" style="bottom: -6%; left: 22%;">VII</div>
+        <div class="numeral" style="bottom: -6%; left: 22%;">VII</div> 
 
-        <div class="numeral" style="top: 13%; right: -3%;">II</div>
-        <div class="numeral" style="top: 13%; left: -3%;">X</div>
-        <div class="numeral" style="bottom: 13%; right: -3%;">IV</div>
-        <div class="numeral" style="bottom: 13%; left: -3%;">VIII</div>
+        <div class="numeral" style="top: 13%; right: -3%;">II</div> 
+        <div class="numeral" style="top: 13%; left: -3%;">X</div> 
+        <div class="numeral" style="bottom: 13%; right: -3%;">IV</div> 
+        <div class="numeral" style="bottom: 13%; left: -3%;">VIII</div> 
 
-        <div class="center-circle"></div>
-        <div class="center-dot"></div>
+        <div class="center-circle"></div> <!-- Центральный круг -->
+        <div class="center-dot"></div> <!-- Центральная точка -->
     </div>
-    <div id="hourHand" class="hand"></div>
-    <div id="minuteHand" class="hand"></div>
-    <div id="secondHand" class="hand"></div>
-    <div id="supports">
+    <div id="hourHand" class="hand"></div> <!-- Часовая стрелка -->
+    <div id="minuteHand" class="hand"></div> <!-- Минутная стрелка -->
+    <div id="secondHand" class="hand"></div> <!-- Секундная стрелка -->
+    <div id="supports"> <!-- Опоры часов (для визуального эффекта) -->
         <div class="support"></div>
-        <div class="support"></div>
+        <div class="support"></div> 
     </div>
 </div>
 
-<script>
-
-const clockFace = document.getElementById('clockFace');
-const hourHand = document.getElementById("hourHand");
-const minuteHand = document.getElementById("minuteHand");
-const secondHand = document.getElementById("secondHand");
-
-for (let i = 0; i < 60; i++) {
-    const marker = document.createElement('div');
-    marker.classList.add('minute-marker');
-    marker.style.transform = `rotate(${i * 6}deg)`;
-    clockFace.appendChild(marker);
-    if (i % 5 === 0) {
-            marker.classList.add('hour-marker');
-        }
-
-        marker.style.transform = `rotate(${i * 6}deg)`;
-        clockFace.appendChild(marker);
-}
-
-function updateClock() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-
-    const hourRotation = (hours % 12 + minutes / 60) * 30;
-    const minuteRotation = (minutes + seconds / 60) * 6;
-    const secondRotation = seconds * 6;
-
-    hourHand.style.transform = `translate(-50%, -100%) rotate(${hourRotation}deg)`;
-    minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteRotation}deg)`;
-    secondHand.style.transform = `translate(-50%, -100%) rotate(${secondRotation}deg)`;
-}
-
-setInterval(updateClock, 1000);
-updateClock();
-
-</script>
+<script src="clock.js"></script> <!-- Подключаем файл JavaScript -->
 </body>
 </html>
